@@ -1,7 +1,8 @@
+var rootEl = $('#root')
 var saveBtnEl = $('.saveBtn');
-var rootEl = $('#root');
-
-
+var textCenterEl = $('.text-center')
+var eventIndex = 0;
+var Events =[];
 
 
 
@@ -17,11 +18,76 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   saveBtnEl.on('click',function(){
-    /*var abc = this.parent().children('description').text();*/
+      
     
-    console.log(this.parentElement.children[1].value)
+    var inputEvent = $(this).parent().children('textarea').val();
+    var inputTimeId = $(this).parent().attr('id');
 
-    /*console.log(this.parentElement.children.eq(1))*/
+    console.log(inputTimeId);
+    console.log(inputEvent);
+
+    var creatEvent = {
+      TimeId: inputTimeId,
+      Event: inputEvent,
+    }
+
+    console.log(creatEvent);
+
+   
+
+    if (inputEvent===""){
+      return;
+    }
+
+   
+    if(Events.length === 0){
+      Events.push(creatEvent);
+    }else{
+      for(let i = 0; i < Events.length; i++){
+        if (Events[i].TimeId !== creatEvent.TimeId){
+           if (i===((Events.length)-1)){
+             Events.push(creatEvent);
+             break;
+           }
+           continue;
+         }else{
+           Events[i].Event = creatEvent.Event;
+           break;
+         }
+       }
+    }
+
+
+
+
+
+    /*Events[i].Event = creatEvent.Event;*/
+    
+    console.log(Events);
+
+  
+
+    
+
+
+
+    /*localStorage.setItem(inputTimeId,inputEvent);*/
+
+
+    /*console.log($(this).parent().children('textarea').val());
+    console.log($(this).parent().attr('id'));*/
+    /*Events.time.push($(this).parent().attr('id'));
+    Events.thisEvent.push($(this).parent().children('textarea').val());*/
+
+
+
+
+
+    /*localStorage.setItem("Events",JSON.stringify(Events));*/
+    
+  
+
+    
   });
 
   //
