@@ -31,7 +31,7 @@ $(function () {
 
   function displayBackground(){
     var currentHour = parseInt(dayjs().format('H'));
-
+    
     for (let i = 0; i<timerContainer.length; i++){
           //change id to only number
       if (parseInt(timerContainer.eq(i).attr('id').slice(5,7)) > currentHour){
