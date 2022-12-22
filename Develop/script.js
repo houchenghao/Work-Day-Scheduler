@@ -46,13 +46,8 @@ $(function () {
     }
   }
   
-
-
-
-
   var saveBtnEl = $('.saveBtn');
   var timeDisplayEl = $('#currentDay');
-  
   
   //Define Events in displayEventsToScheduler
   displayEventsToScheduler();
@@ -95,9 +90,8 @@ $(function () {
 
   });
 
-  displayEventsToScheduler()
-
   setInterval(function(){
+    displayEventsToScheduler();
     var rightNow = dayjs().format('dddd, MMMM DD');
     timeDisplayEl.text(rightNow);
     displayEventsToScheduler
